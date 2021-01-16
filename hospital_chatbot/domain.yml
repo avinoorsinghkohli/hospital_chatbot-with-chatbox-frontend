@@ -1,0 +1,40 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- search_patient_record
+- patient_imr
+- testing
+- thanks
+- resp
+entities:
+- number
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_number:
+  - text: Please enter the Patient Number
+  utter_upload:
+  - text: Please upload the required image for testing
+  utter_positive:
+  - text: It is the positive case
+actions:
+- action_patient_record

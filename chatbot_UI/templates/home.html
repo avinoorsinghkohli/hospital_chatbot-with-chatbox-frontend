@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .charlie{
+           
+            align-self: flex-start;
+            background-color: rgba(0,255,255,0.5);
+            padding: 10px;
+            
+        }
+        .avi{
+            padding: 10px;
+            align-self: flex-end;
+            background-color: rgba(0,0,0,0.5);
+            
+        }
+        #avi{
+            content:"Avi ";
+            color: black;
+            transform: transformY(-10px);
+            right: 10px;
+        }
+        button{
+            background:none;
+            outline:none;
+            border:none;
+            box-shadow: 0px 1px 4px rgba(0,0,0,0.5);
+        }
+        input{
+            outline:none;
+            border:none;
+            box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+            /* width: 70vw; */
+        }
+        .chat{
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            /* padding: 100px; */
+            border: 1px dotted black;
+            height: 70vh;
+        }
+        form{
+            /* padding: 50px; */
+            /* position: fixed; */
+            bottom: 0;
+        }
+        .container{
+          position: fixed;
+          bottom: 0;
+          max-width: 30vw;
+          right: 0;
+          /* height: 0px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="chat col-12" id='chat'>
+            {% for i,value in result %}
+            <div id="{{i}}">
+                {{i}}
+                <div class="{{i}}">{{value}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-12">
+        <form method="POST" action="/result">
+            <input type="text" name="message">
+            {% if image%}
+            <input type="file" name="image">
+            {% endif%}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+        </div>
+      </div>
+        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <script>
+      
+      function updateScroll(){
+        var element = document.getElementById("chat");
+        element.scrollTop = element.scrollHeight;
+      }
+      setInterval(updateScroll,1000);
+    </script>
+</body>
+</html>
